@@ -7,38 +7,10 @@ import platform
 import pandas as pd
 from cl_api.send_email_model import send_email
 from cl_api.send_email_model import send_msgs
-import argparse
 import warnings
 warnings.filterwarnings("ignore")
-from contextlib import contextmanager
-import time
 
-@contextmanager
-def timer(title):
-    t0 = time.time()
-    yield
-    print("{}：使用时间为{:.0f}s".format(title, time.time() - t0))
-
-parser = argparse.ArgumentParser(description='用于test和online开发')
-parser.add_argument('--online', action='store_true',default=False ,help ='False 为测试，True 为生产运行')
-args = parser.parse_args()
-
-# 自动切换路径
-
-mac_path = '/Users/yourname/PycharmProjects/py_email/output'
-linux_path = '/home/user/yourname/PycharmProjects/py_email/output_data'
-
-def get_path_file(mac_path,linux_path):
-    sys = platform.system()
-    if sys == "Darwin":
-        print("OS is 苹果电脑!!!")
-        path = mac_path
-        return path
-    elif sys == "Linux":
-        print("OS is Linux!!!")
-        path = linux_path
-    return path
-
+mac_path = '/Users/hejipei/PycharmProjects/CL_project/cl_api/py_email/output'
 
 data = {'指标1': [i for i in range(10000,10100)],
         '指标2字段比较长': [ i+0.1234 for i in range(1000,1100)],
@@ -46,24 +18,17 @@ data = {'指标1': [i for i in range(10000,10100)],
         '指标4字段非常比较长': ['a这是一个测试，文本内容' for  i in range(1000,1100)],
         '指标5': ['2025-01-01'for i in range(1000,1100)]
         }
-
 if __name__ == '__main__':
     # 获取数据
-    with timer("运行数据"):
-        df = pd.DataFrame(data)
+    df = pd.DataFrame(data)
     # 配置邮箱信息
-    send_msgs['log']['fromaddr'] = "account@xxx.com"
-    send_msgs['log']['smtpaddr'] = "smtp.exmail.xx.com"
+    send_msgs['log']['fromaddr'] = "youreamil@163.com"
+    send_msgs['log']['smtpaddr'] = "smtp.163.com"
     send_msgs['log']['password'] = "123456"
 
-    if args.online:
-        print('=====生产发送=====')
-        send_msgs['address']['toaddrs'] = ["hejp@163.com"]  # 格式为列表
-        send_msgs['address']['ccaddrs'] = ["hejp@163.com"]  # 格式为列表
-    else:
-        print('=====测试发送=====')
-        send_msgs['address']['toaddrs'] = ["hejp@253.com"]  # 格式为列表
-        send_msgs['address']['ccaddrs'] = []  # 格式为列表
+    print('=====测试发送=====')
+    send_msgs['address']['toaddrs'] = ["send_email@163.com"]  # 格式为列表
+    send_msgs['address']['ccaddrs'] = ["cc_email@163.com"]  # 格式为列表
 
 
     send_msgs['data_text']['subject'] = f"test主题"
@@ -88,7 +53,7 @@ if __name__ == '__main__':
     send_msgs['msg_type']['msg_html_table'] = 1
     send_msgs['msg_type']['msg_html_n'] = 20
 
-    send_msgs['data_text']['path'] = get_path_file(mac_path,linux_path)
+    send_msgs['data_text']['path'] = mac_path
     send_msgs['data_text']['file'] = '测试附件excel.xlsx'
 
     send_msgs['date_interval']['start_date'] = '2020-03-01'
