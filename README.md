@@ -23,7 +23,7 @@ end_date         | 定制邮件的结束日期:格式xxxx-xx-xx|str
 excel_data       | 发送的数据,格式为数据框型的列表 [dataframe]|list
 sheet_name       | 发送数据对应的文本名称|list
 
-关注我的博客[hejpei](https://blog.csdn.net/hejp_123)
+关注我的博客[hejipei](https://blog.csdn.net/hejp_123)
 
 #### 使用方法
 在run/send_eamil_test.py 中配置你的邮箱账号密码就能直接运行结果
