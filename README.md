@@ -1,8 +1,6 @@
 
 ### 线上连接服务器
-* 服务器地址： linux  
-
-
+* 服务器地址： linux/window 
 
 #### send_msgs参数说明 
 | 参数 | 参数说明| 参数类型 |
@@ -27,60 +25,12 @@ sheet_name       | 发送数据对应的文本名称|list
 
 关注我的博客[hejpei](https://blog.csdn.net/hejp_123)
 
-#### 安装
-```  命令行
-python setup.py install
-```
-#### 导入模块
-``` 命令行
-import cl_api
-```
+#### 使用方法
+在run/send_eamil_test.py 中配置你的邮箱账号密码就能直接运行结果
 
+然后运行
 ```python
-
-data = {'指标1': [i for i in range(10000,10100)],
-        '指标2字段比较长': [ i+0.1234 for i in range(1000,1100)],
-        '指标3': ['abcdefg' for  i in range(1000,1100)],
-        '指标4字段非常比较长': ['a这是一个测试，文本内容' for  i in range(1000,1100)],
-        '指标5': ['2025-01-01'for i in range(1000,1100)]
-        }
-df = pd.DataFrame(df)
-
-send_msgs = {
-            "log": {  # 登录信息
-                "fromaddr": "",
-                "smtpaddr": "",
-                "password": ""
-            },
-            "address": {  # 收件人 抄送人
-                "toaddrs": [""],
-                "ccaddrs": [""]
-            }, # 发送类型
-            "msg_type": {
-                "msg_txt": 1,
-                "msg_excel": 1,
-                "msg_html_table": 0,
-                "msg_html_n":20
-            },
-            "data_text": {  # 主题 正文 附件名称 excel导出路径 发送数据
-                "subject": "",
-                "main_txt": "",
-                "path": "",
-                "file": "",
-            },
-            "date_interval":{
-                "start_date":"",
-                "end_date":""
-            },
-            "send_date":{
-                "excel_data":"",
-                "sheet_name":""
-            }
-        }
-
+python send_eamil_test.py
 ```
-
-
-
 
 
