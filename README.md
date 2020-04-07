@@ -39,11 +39,11 @@ import cl_api
 ```python
 
 data = {'指标1': [i for i in range(10000,10100)],
-      '指标2字段比较长': [ i+0.1234 for i in range(1000,1100)],
-      '指标3': ['chuanglan@253' for  i in range(1000,1100)],
-      '指标4字段非常比较长': ['chuanglan@253' for  i in range(1000,1100)],
-      '指标5': ['2020-01-01'for i in range(1000,1100)]}
-
+        '指标2字段比较长': [ i+0.1234 for i in range(1000,1100)],
+        '指标3': ['abcdefg' for  i in range(1000,1100)],
+        '指标4字段非常比较长': ['a这是一个测试，文本内容' for  i in range(1000,1100)],
+        '指标5': ['2025-01-01'for i in range(1000,1100)]
+        }
 df = pd.DataFrame(df)
 
 send_msgs = {
