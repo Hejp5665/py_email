@@ -1,6 +1,6 @@
 
 ### 线上连接服务器
-* 服务器地址： linux/window 
+* 服务器地址： linux/window 都可以使用
 
 #### send_msgs参数说明 
 | 参数 | 参数说明| 参数类型 |
